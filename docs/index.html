@@ -125,15 +125,14 @@
             "https://api.friedliver.com/?email=" + encodeURIComponent(email),
             true,
           );
-          xhr.onreadystatechange = () => {
-            if (xhr.readyState === 4 && this.status === 200) {
-              // Hide form and show success message
-              this.style.display = "none";
-              document.getElementById("successMessage").style.display = "block";
+          /*xhr.onreadystatechange = () => {
+            if (xhr.readyState == 4 && this.status == 200) {
+            should handle errors here.
             }
-            console.log(`readyState=${xhr.readyState}, status=${xhr.status}`);
-          };
+          };*/
           xhr.send();
+          this.style.display = "none";
+          document.getElementById("successMessage").style.display = "block";
         });
       })();
     </script>
