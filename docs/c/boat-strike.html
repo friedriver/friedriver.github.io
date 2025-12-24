@@ -263,42 +263,44 @@
           <img src="/i/boat-strike.png" alt="Congratulations Card" />
         </div>
         <div class="message-panel">
-          <p>
-            <textarea id="message">
-Wishing you all the best on this incredible achievement!</textarea
-            >
-          </p>
           <span id="save-btn-err"></span>
-          <p id="save-btn-ctr">
-            <button style="width: 100%" id="save-btn">Save</button>
-            <script>
-              (() => {
-                const pg = "boat-strike";
-                document.getElementById("save-btn").onclick = () => {
-                  const xhr = new XMLHttpRequest();
-                  xhr.open(
-                    "GET",
-                    `https://api.friedliver.com/sqrunch?message=${encodeURIComponent(document.getElementById("message").value.trim())}&page=${encodeURIComponent(pg)}`,
-                    true,
-                  );
-                  xhr.onreadystatechange = () => {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                      try {
-                        const rdata = JSON.parse(xhr.responseText);
-                        const url = `https://friedliver.com/r/${rdata.url}`;
-                        document.getElementById("save-btn-ctr").innerHTML =
-                          `<span onClick="navigator.clipboard.writeText('${url}').then(() => {document.getElementById("save-btn-err").innerText = 'Copied to clipboard!'})">${url}</span>`;
-                      } catch (e) {
-                        document.getElementById("save-btn-err").innerText =
-                          "Something went wrong, please refresh and try again";
+          <span id="save-btn-ctr">
+            <p>
+              <textarea id="message">
+Wishing you all the best on this incredible achievement!</textarea
+              >
+            </p>
+            <p>
+              <button style="width: 100%" id="save-btn">Save</button>
+              <script>
+                (() => {
+                  const pg = "boat-strike";
+                  document.getElementById("save-btn").onclick = () => {
+                    const xhr = new XMLHttpRequest();
+                    xhr.open(
+                      "GET",
+                      `https://api.friedliver.com/sqrunch?message=${encodeURIComponent(document.getElementById("message").value.trim())}&page=${encodeURIComponent(pg)}`,
+                      true,
+                    );
+                    xhr.onreadystatechange = () => {
+                      if (xhr.readyState == 4 && xhr.status == 200) {
+                        try {
+                          const rdata = JSON.parse(xhr.responseText);
+                          const url = `https://api.friedliver.com/r/${rdata.url}`;
+                          document.getElementById("save-btn-ctr").innerHTML =
+                            `<span onClick="navigator.clipboard.writeText('${url}').then(() => {document.getElementById("save-btn-err").innerText = 'Copied to clipboard!';})">${url}</span>`;
+                        } catch (e) {
+                          document.getElementById("save-btn-err").innerText =
+                            "Something went wrong, please refresh and try again";
+                        }
                       }
-                    }
+                    };
+                    xhr.send();
                   };
-                  xhr.send();
-                };
-              })();
-            </script>
-          </p>
+                })();
+              </script>
+            </p>
+          </span>
         </div>
       </div>
       <div class="envelope-front"></div>
