@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+
+from http.server import SimpleHTTPRequestHandler
+import socketserver
+
+PORT = 8080
+
+
+class htr(SimpleHTTPRequestHandler):
+    def __init__(self, *args, **kwargs):
+        kwargs['directory'] = 'docs'
+        super().__init__(*args, **kwargs)
+
+
+htr.extensions_map = {
+  '.html': 'text/html',
+  '': 'text/html',
+}
+
+with socketserver.TCPServer(("", PORT), htr) as httpd:
+  print(f'http://localhost:{PORT}')
+  httpd.serve_forever()

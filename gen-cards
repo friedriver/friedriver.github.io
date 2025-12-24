@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+mkdir docs/c docs/i docs/r 2>/dev/null
+for f in ecard-sample/*.png; do
+  page="$(basename $f | perl -p -e 's/\.png//')"
+  echo "|generating $page"
+  cp "ecard-sample/index.html" "docs/r/$page"
+  cp "ecard-sample/index-gen.html" "docs/c/$page"
+  cp "$f" "docs/i/${page}.png"
+  perl -pi -e 's/\{\{IMAGE\}\}/\/i\/'$page'/g' docs/{r,c}/"$page"
+  curl -s "https://api.friedliver.com/57ea9fa9-c422-4a2d-b5b9-1c0092e3c0fc?page=$page&key=$FRIEDLIVER" >/dev/null 2>&1
+done
