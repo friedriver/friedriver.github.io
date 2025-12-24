@@ -7,6 +7,6 @@ for f in ecard-sample/*.png; do
   cp "ecard-sample/index.html" "docs/r/$page.html"
   cp "ecard-sample/index-gen.html" "docs/c/$page.html"
   cp "$f" "docs/i/${page}.png"
-  perl -pi -e 's/\{\{IMAGE\}\}/\/i\/'$page'/g' docs/{r,c}/"${page}.html"
+  perl -pi -e 's/\{\{IMAGE\}\}/'$page'/g' docs/{r,c}/"${page}.html"
   curl -s "https://api.friedliver.com/57ea9fa9-c422-4a2d-b5b9-1c0092e3c0fc?page=$page&key=$FRIEDLIVER" >/dev/null 2>&1
 done
