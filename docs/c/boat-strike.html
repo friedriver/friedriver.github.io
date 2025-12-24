@@ -286,7 +286,7 @@ Wishing you all the best on this incredible achievement!</textarea
                       if (xhr.readyState == 4 && xhr.status == 200) {
                         try {
                           const rdata = JSON.parse(xhr.responseText);
-                          const url = `https://api.friedliver.com/r/${rdata.url}`;
+                          const url = `https://api.friedliver.com/e/${rdata.url}`;
                           document.getElementById("save-btn-ctr").innerHTML =
                             `<span onClick="navigator.clipboard.writeText('${url}').then(() => {document.getElementById("save-btn-err").innerText = 'Copied to clipboard!';})">${url}</span>`;
                         } catch (e) {
