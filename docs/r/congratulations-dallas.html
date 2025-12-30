@@ -222,6 +222,39 @@
           z-index: 10;
         }
       }
+      /* Paused state - animations wait for click */
+      .paused .card,
+      .paused .message-panel,
+      .paused .envelope-flap-container,
+      .paused .envelope-flap {
+        animation-play-state: paused;
+      }
+
+      /* Click overlay */
+      .click-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+        cursor: pointer;
+      }
+
+      .click-overlay span {
+        background: white;
+        padding: 20px 40px;
+        border-radius: 10px;
+        font-family: Georgia, serif;
+        font-size: 24px;
+        color: #333;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
       /* Confetti */
       .confetti {
         position: fixed;
@@ -251,7 +284,8 @@
     </style>
   </head>
   <body>
-    <div class="envelope-container">
+    <div class="click-overlay" id="overlay"><span>Click to Open</span></div>
+    <div class="envelope-container paused" id="envelope">
       <div class="envelope-inner"></div>
       <div class="envelope-back"></div>
       <div class="card">
@@ -274,6 +308,9 @@
         <div class="envelope-flap"></div>
       </div>
     </div>
+    <audio autoplay loop>
+      <source src="/i/nfl-on-fox-theme-music.mp3" type="audio/mpeg" />
+    </audio>
 
     <script>
       const colors = [
@@ -339,9 +376,18 @@
         }
       }
 
-      // Fire confetti when flap opens (synced with animation)
-      // Animation is 12s with 0.5s delay, flap opens around 12% (1.44s into animation)
-      setTimeout(createConfetti, 1900); // 0.5s delay + ~1.4s for flap to open
+      // Start on click
+      document.getElementById("overlay").addEventListener("click", function () {
+        // Hide overlay
+        this.style.display = "none";
+        // Unpause animations
+        document.getElementById("envelope").classList.remove("paused");
+        // Play audio if present
+        const audio = document.querySelector("audio");
+        if (audio) audio.play();
+        // Fire confetti when flap opens (synced with animation)
+        setTimeout(createConfetti, 1900);
+      });
     </script>
   </body>
 </html>

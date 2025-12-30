@@ -11,6 +11,7 @@ for f in ecard-sample/*.png; do
   if [[ "$message" == '' || "$message" == "null" ]]; then
     message="$(cat ecard-sample/config.json | jq -r '."default"."message"')"
   fi
+  audio="$(cat ecard-sample/config.json | jq -r '."'$page'"."audio"')"
   echo "|generating $page"
   cp "ecard-sample/index.html" "docs/r/$page.html"
   cp "ecard-sample/index-gen.html" "docs/c/$page.html"
@@ -26,6 +27,12 @@ for f in ecard-sample/*.png; do
     perl -pi -e 's/\{\{FONT_BLOCK\}\}//g' docs/{r,c}/"${page}.html"
   else
     perl -pi -e 's/\{\{FONT_BLOCK\}\}//g' docs/{r,c}/"${page}.html"
+  fi
+  if [[ "$audio" != '' && "$audio" != "null" ]]; then
+    echo "|  -> audio -> $audio"
+    perl -pi -e 's|\{\{MIDI\}\}|<audio autoplay loop><source src="/i/'$audio'" type="audio/mpeg"></audio>|g' docs/{r,c}/"${page}.html"
+  else
+    perl -pi -e 's/\{\{MIDI\}\}//g' docs/{r,c}/"${page}.html"
   fi
   curl -s "https://api.friedliver.com/57ea9fa9-c422-4a2d-b5b9-1c0092e3c0fc?page=$page&key=$FRIEDLIVER" >/dev/null 2>&1
   if [[ "$(which prettier)" ]]; then
