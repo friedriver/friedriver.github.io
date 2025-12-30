@@ -322,7 +322,8 @@
                           const rdata = JSON.parse(xhr.responseText);
                           const url = `https://api.friedliver.com/e/${rdata.url}`;
                           document.getElementById("save-btn-ctr").innerHTML =
-                            `<span onClick="navigator.clipboard.writeText('${url}').then(() => {document.getElementById("save-btn-err").innerText = 'Copied to clipboard!';})">${url}</span>`;
+                            `<p><a href="${url}" target="_blank" style="color:#667eea;word-break:break-all;">${url}</a></p>
+                             <p><button style="width:100%;margin-top:8px;" onclick="navigator.clipboard.writeText('${url}').then(() => this.innerText = 'Copied!')">Copy Link</button></p>`;
                         } catch (e) {
                           document.getElementById("save-btn-err").innerText =
                             "Something went wrong, please refresh and try again";
