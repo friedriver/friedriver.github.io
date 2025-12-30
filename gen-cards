@@ -13,7 +13,7 @@ for f in ecard-sample/*.png; do
   cp "$f" "docs/i/${page}.png"
   perl -pi -e 's/\{\{IMAGE\}\}/'$page'/g' docs/{r,c}/"${page}.html"
   perl -pi -e 's/\{\{FONT\}\}/'$font'/g' docs/{r,c}/"${page}.html"
-  font_uri="$(find docs/i/ -name "*${font}*.ttf" | head -n 1 | perl -p -e 's/\//\\\//g')"
+  font_uri="$(find docs/i/ -name "*${font}*.ttf" | head -n 1 | perl -p -e 's/^docs//' | perl -p -e 's/\//\\\//g')"
   if [[ "$font_uri" != "" ]]; then
     echo "|  -> custom font -> $font, $font_uri"
     perl -pi -e 's/\{\{FONT_BLOCK\}\}/\@font-face { font-face: "'$font'"; src: url("\/i\/'$font_uri'"); }/g' docs/{r,c}/"${page}.html"
