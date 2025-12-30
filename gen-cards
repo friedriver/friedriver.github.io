@@ -3,10 +3,28 @@
 mkdir docs/c docs/i docs/r 2>/dev/null
 for f in ecard-sample/*.png; do
   page="$(basename $f | perl -p -e 's/\.png//')"
+  font="$(cat ecard-sample/config.json | jq -r '."'$page'"."font-family"')"
+  if [[ "$font" == '' || "$font" == "null" ]]; then
+    font="$(cat ecard-sample/config.json | jq '."default"."font-family"')"
+  fi
   echo "|generating $page"
   cp "ecard-sample/index.html" "docs/r/$page.html"
   cp "ecard-sample/index-gen.html" "docs/c/$page.html"
   cp "$f" "docs/i/${page}.png"
   perl -pi -e 's/\{\{IMAGE\}\}/'$page'/g' docs/{r,c}/"${page}.html"
+  perl -pi -e 's/\{\{FONT\}\}/'$font'/g' docs/{r,c}/"${page}.html"
+  font_uri="$(find docs/i/ -name "*${font}*.ttf" | head -n 1 | perl -p -e 's/\//\\\//g')"
+  if [[ "$font_uri" != "" ]]; then
+    echo "|  -> custom font -> $font, $font_uri"
+    perl -pi -e 's/\{\{FONT_BLOCK\}\}/\@font-face { font-face: "'$font'"; src: url("\/i\/'$font_uri'"); }/g' docs/{r,c}/"${page}.html"
+    perl -pi -e 's/\{\{FONT_BLOCK\}\}//g' docs/{r,c}/"${page}.html"
+  else
+    perl -pi -e 's/\{\{FONT_BLOCK\}\}//g' docs/{r,c}/"${page}.html"
+  fi
   curl -s "https://api.friedliver.com/57ea9fa9-c422-4a2d-b5b9-1c0092e3c0fc?page=$page&key=$FRIEDLIVER" >/dev/null 2>&1
+  if [[ "$(which prettier)" ]]; then
+    prettier -w docs/{r,c}/"${page}.html" >/dev/null
+  else
+    echo "|  -> prettier not found, skipping lint"
+  fi
 done
