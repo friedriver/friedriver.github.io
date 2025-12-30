@@ -6,8 +6,8 @@
     <title>E-Card</title>
     <style>
       @font-face {
-        font-face: "RumRaisin";
-        src: url("/i//i/RumRaisin-Regular.ttf");
+        font-family: "RumRaisin";
+        src: url("/i/RumRaisin-Regular.ttf");
       }
       * {
         margin: 0;
@@ -18,6 +18,7 @@
       body {
         min-height: 100vh;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -259,6 +260,24 @@
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
       }
 
+      /* Make your own link */
+      .make-your-own {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .make-your-own a {
+        color: rgba(255, 255, 255, 0.7);
+        font-family: Georgia, serif;
+        font-size: 14px;
+        text-decoration: none;
+      }
+
+      .make-your-own a:hover {
+        color: white;
+        text-decoration: underline;
+      }
+
       /* Confetti */
       .confetti {
         position: fixed;
@@ -309,6 +328,9 @@
       <div class="envelope-flap-container">
         <div class="envelope-flap"></div>
       </div>
+    </div>
+    <div class="make-your-own">
+      <a href="/c/boat-strike">Make your own version</a>
     </div>
     <audio autoplay loop>
       <source src="/i/vibrant-cuba.mp3" type="audio/mpeg" />
