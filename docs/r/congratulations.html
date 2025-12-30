@@ -36,8 +36,8 @@
         bottom: 30px;
         z-index: 2;
         animation:
-          slideOut 12s ease-in-out 0.5s forwards,
-          cardZ 12s ease-in-out 0.5s forwards;
+          slideOut 8s ease-in-out 0.5s forwards,
+          cardZ 8s ease-in-out 0.5s forwards;
         transform-origin: center bottom;
         perspective: 1000px;
       }
@@ -70,8 +70,8 @@
         transform-origin: top center;
         transform: rotateX(-90deg);
         animation:
-          foldDown 12s ease-in-out 0.5s forwards,
-          messagePanelZ 12s ease-in-out 0.5s forwards;
+          foldDown 8s ease-in-out 0.5s forwards,
+          messagePanelZ 8s ease-in-out 0.5s forwards;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -105,7 +105,7 @@
         height: 160px;
         top: 120px;
         z-index: 5;
-        animation: flapZ 12s ease-in-out 0.5s forwards;
+        animation: flapZ 8s ease-in-out 0.5s forwards;
       }
 
       .envelope-flap {
@@ -117,7 +117,7 @@
         border-right: 200px solid transparent;
         border-top: 160px solid #b8956a;
         transform-origin: top center;
-        animation: openFlap 12s ease-in-out 0.5s forwards;
+        animation: openFlap 8s ease-in-out 0.5s forwards;
       }
 
       /* Envelope front */
@@ -331,7 +331,7 @@
     <div class="make-your-own">
       <a href="/c/congratulations">Make your own version</a>
     </div>
-    <audio autoplay loop>
+    <audio autoplay>
       <source src="/i/nfl-on-fox-theme-music.mp3" type="audio/mpeg" />
     </audio>
 
@@ -409,7 +409,7 @@
         const audio = document.querySelector("audio");
         if (audio) audio.play();
         // Fire confetti when flap opens (synced with animation)
-        setTimeout(createConfetti, 1900);
+        setTimeout(createConfetti, 1300);
       });
     </script>
   </body>

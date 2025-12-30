@@ -38,7 +38,7 @@ for f in ecard-sample/*.png; do
   fi
   if [[ "$audio" != '' && "$audio" != "null" ]]; then
     echo "|  -> audio -> $audio"
-    perl -pi -e 's|\{\{MIDI\}\}|<audio autoplay loop><source src="/i/'$audio'" type="audio/mpeg"></audio>|g' docs/{r,c}/"${page}.html"
+    perl -pi -e 's|\{\{MIDI\}\}|<audio autoplay><source src="/i/'$audio'" type="audio/mpeg"></audio>|g' docs/{r,c}/"${page}.html"
   else
     perl -pi -e 's/\{\{MIDI\}\}//g' docs/{r,c}/"${page}.html"
   fi
