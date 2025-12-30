@@ -77,7 +77,7 @@
       }
 
       .message-panel p {
-        font-family: "Georgia", serif;
+        font-family: "{{FONT}}", serif;
         font-size: 18px;
         color: #333;
         text-align: center;
@@ -266,8 +266,7 @@
           <span id="save-btn-err"></span>
           <span id="save-btn-ctr">
             <p>
-              <textarea id="message">
-Wishing you all the best on this incredible achievement!</textarea
+              <textarea id="message">{{MESSAGE}}</textarea
               >
             </p>
             <p>
@@ -308,6 +307,7 @@ Wishing you all the best on this incredible achievement!</textarea
         <div class="envelope-flap"></div>
       </div>
     </div>
+    {{MIDI}}
 
     <script>
       const colors = [

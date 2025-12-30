@@ -259,12 +259,10 @@
           <img src="/i/congratulations.png" alt="Congratulations Card" />
         </div>
         <div class="message-panel">
-          <p id="message">
-            Wishing you all the best on this<br />incredible achievement!
-          </p>
+          <p id="message">Wishing you all the best on this incredible achievement!</p>
           <script>
             const qs = new URLSearchParams(window.location.search);
-            document.getElementById("message").innerText = qs.get("msg");
+            if (qs.get("msg")) document.getElementById("message").innerText = qs.get("msg");
           </script>
         </div>
       </div>
@@ -273,6 +271,7 @@
         <div class="envelope-flap"></div>
       </div>
     </div>
+    
 
     <script>
       const colors = [

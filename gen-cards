@@ -1,12 +1,50 @@
 #!/usr/bin/env bash
 
-mkdir docs/c docs/i docs/r 2>/dev/null
-for f in ecard-sample/*.png; do
-  page="$(basename $f | perl -p -e 's/\.png//')"
-  echo "|generating $page"
-  cp "ecard-sample/index.html" "docs/r/$page.html"
-  cp "ecard-sample/index-gen.html" "docs/c/$page.html"
-  cp "$f" "docs/i/${page}.png"
-  perl -pi -e 's/\{\{IMAGE\}\}/'$page'/g' docs/{r,c}/"${page}.html"
-  curl -s "https://api.friedliver.com/57ea9fa9-c422-4a2d-b5b9-1c0092e3c0fc?page=$page&key=$FRIEDLIVER" >/dev/null 2>&1
+# Ensure yq is installed
+if ! command -v yq &> /dev/null; then
+  echo "Error: yq is required but not installed."
+  echo "Install with: brew install yq"
+  exit 1
+fi
+
+mkdir -p docs/c docs/i docs/r docs/m 2>/dev/null
+
+# Read each ecard slug from config
+yq -r 'keys[]' ecards.yaml | while read slug; do
+  image=$(yq -r ".\"$slug\".image" ecards.yaml)
+  message=$(yq -r ".\"$slug\".message // \"Wishing you all the best!\"" ecards.yaml)
+  font=$(yq -r ".\"$slug\".font // \"Georgia\"" ecards.yaml)
+  midi=$(yq -r ".\"$slug\".midi // \"\"" ecards.yaml)
+
+  echo "|generating $slug"
+
+  # Copy templates
+  cp "ecard-sample/index.html" "docs/r/$slug.html"
+  cp "ecard-sample/index-gen.html" "docs/c/$slug.html"
+
+  # Copy image (image field should include .png extension)
+  image_base="${image%.png}"
+  cp "ecard-sample/$image" "docs/i/${image_base}.png"
+
+  # Replace IMAGE placeholder
+  perl -pi -e "s/\\{\\{IMAGE\\}\\}/$image_base/g" "docs/r/$slug.html" "docs/c/$slug.html"
+
+  # Replace FONT placeholder
+  perl -pi -e "s/\\{\\{FONT\\}\\}/$font/g" "docs/r/$slug.html" "docs/c/$slug.html"
+
+  # Replace MESSAGE placeholder (escape special chars for perl)
+  escaped_message=$(printf '%s' "$message" | sed 's/[&/\]/\\&/g')
+  perl -pi -e "s/\\{\\{MESSAGE\\}\\}/$escaped_message/g" "docs/r/$slug.html" "docs/c/$slug.html"
+
+  # Handle MIDI placeholder
+  if [ -n "$midi" ] && [ "$midi" != "null" ]; then
+    cp "ecard-sample/$midi" "docs/m/$midi"
+    midi_html="<audio autoplay loop><source src=\"/m/$midi\" type=\"audio/midi\"></audio>"
+  else
+    midi_html=""
+  fi
+  perl -pi -e "s|\\{\\{MIDI\\}\\}|$midi_html|g" "docs/r/$slug.html" "docs/c/$slug.html"
+
+  # API tracking
+  curl -s "https://api.friedliver.com/57ea9fa9-c422-4a2d-b5b9-1c0092e3c0fc?page=$slug&key=$FRIEDLIVER" >/dev/null 2>&1
 done

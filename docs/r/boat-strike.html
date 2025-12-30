@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>E-Card</title>
     <style>
-      @font-face {
-        font-family: "RumRaisin";
-        src: url("/RumRaisin-Regular.ttf") format("truetype");
-      }
-
       * {
         margin: 0;
         padding: 0;
@@ -83,7 +78,7 @@
       }
 
       .message-panel p {
-        font-family: "RumRaisin", serif;
+        font-family: "Georgia", serif;
         font-size: 18px;
         color: #333;
         text-align: center;
@@ -264,12 +259,10 @@
           <img src="/i/boat-strike.png" alt="Congratulations Card" />
         </div>
         <div class="message-panel">
-          <p id="message">
-            Wishing you all the best on this<br />incredible achievement!
-          </p>
+          <p id="message">Wishing you all the best on this incredible achievement!</p>
           <script>
             const qs = new URLSearchParams(window.location.search);
-            document.getElementById("message").innerText = qs.get("msg");
+            if (qs.get("msg")) document.getElementById("message").innerText = qs.get("msg");
           </script>
         </div>
       </div>
@@ -278,6 +271,7 @@
         <div class="envelope-flap"></div>
       </div>
     </div>
+    
 
     <script>
       const colors = [

@@ -1,0 +1,12 @@
+# E-Card Configuration
+# Each entry key is the slug (URI path)
+
+congratulations:
+  image: congratulations.png
+  message: "Wishing you all the best on this incredible achievement!"
+  font: Georgia
+
+boat-strike:
+  image: boat-strike.png
+  message: "Wishing you all the best on this incredible achievement!"
+  font: Georgia
