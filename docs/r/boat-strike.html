@@ -263,12 +263,11 @@
           <img src="/i/boat-strike.png" alt="Congratulations Card" />
         </div>
         <div class="message-panel">
-          <p id="message">
-            Wishing you all the best on this<br />incredible achievement!
-          </p>
+          <p id="message">Here's wishing you a terrific 2026!</p>
           <script>
             const qs = new URLSearchParams(window.location.search);
-            document.getElementById("message").innerText = qs.get("msg");
+            if (qs.get("msg"))
+              document.getElementById("message").innerText = qs.get("msg");
           </script>
         </div>
       </div>
