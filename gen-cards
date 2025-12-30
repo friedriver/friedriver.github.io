@@ -12,6 +12,13 @@ for f in ecard-sample/*.png; do
     message="$(cat ecard-sample/config.json | jq -r '."default"."message"')"
   fi
   audio="$(cat ecard-sample/config.json | jq -r '."'$page'"."audio"')"
+  background="$(cat ecard-sample/config.json | jq -r '."'$page'"."background"')"
+  if [[ "$background" == '' || "$background" == "null" ]]; then
+    background="$(cat ecard-sample/config.json | jq -r '."default"."background"')"
+  fi
+  if [[ "$background" == '' || "$background" == "null" ]]; then
+    background="#f6f6f5"
+  fi
   echo "|generating $page"
   cp "ecard-sample/index.html" "docs/r/$page.html"
   cp "ecard-sample/index-gen.html" "docs/c/$page.html"
@@ -20,6 +27,7 @@ for f in ecard-sample/*.png; do
   perl -pi -e 's/\{\{FONT\}\}/'$font'/g' docs/{r,c}/"${page}.html"
   escaped_message=$(printf '%s' "$message" | sed 's/[&/\]/\\&/g')
   perl -pi -e 's/\{\{MESSAGE\}\}/'"$escaped_message"'/g' docs/{r,c}/"${page}.html"
+  perl -pi -e 's/\{\{BACKGROUND\}\}/'$background'/g' docs/{r,c}/"${page}.html"
   font_uri="$(find docs/i/ -name "*${font}*.ttf" | head -n 1 | perl -p -e 's/^docs//' | perl -p -e 's/\//\\\//g')"
   if [[ "$font_uri" != "" ]]; then
     echo "|  -> custom font -> $font, $font_uri"
