@@ -35,8 +35,8 @@
         bottom: 30px;
         z-index: 2;
         animation:
-          slideOut 8s ease-in-out 0.5s forwards,
-          cardZ 8s ease-in-out 0.5s forwards;
+          slideOut 4s ease-in-out 0.5s forwards,
+          cardZ 4s ease-in-out 0.5s forwards;
         transform-origin: center bottom;
         perspective: 1000px;
       }
@@ -69,8 +69,8 @@
         transform-origin: top center;
         transform: rotateX(-90deg);
         animation:
-          foldDown 8s ease-in-out 0.5s forwards,
-          messagePanelZ 8s ease-in-out 0.5s forwards;
+          foldDown 4s ease-in-out 0.5s forwards,
+          messagePanelZ 4s ease-in-out 0.5s forwards;
         align-items: center;
         justify-content: center;
         padding: 20px;
@@ -103,7 +103,7 @@
         height: 160px;
         top: 120px;
         z-index: 5;
-        animation: flapZ 8s ease-in-out 0.5s forwards;
+        animation: flapZ 4s ease-in-out 0.5s forwards;
       }
 
       .envelope-flap {
@@ -115,7 +115,7 @@
         border-right: 200px solid transparent;
         border-top: 160px solid #b8956a;
         transform-origin: top center;
-        animation: openFlap 8s ease-in-out 0.5s forwards;
+        animation: openFlap 4s ease-in-out 0.5s forwards;
       }
 
       /* Envelope front */
@@ -422,7 +422,7 @@ So get off your butt and get in shape for 2026!</textarea
         const audio = document.querySelector("audio");
         if (audio) audio.play();
         // Fire confetti when flap opens (synced with animation)
-        setTimeout(createConfetti, 1300);
+        setTimeout(createConfetti, 650);
       });
     </script>
   </body>
