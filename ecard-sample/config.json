@@ -2,5 +2,6 @@
  "feelings-dont-win": {"background":"#fefefe", "message": "So get off your butt and get in shape for 2026!", "audio":"nfl-on-fox-theme-music.mp3"},
  "congratulations-dallas": {"audio":"nfl-on-fox-theme-music.mp3"},
  "congratulations": {"audio":"nfl-on-fox-theme-music.mp3"},
+ "big-blue-genius": {"background": "#fcfcfc", "audio":"nfl-on-fox-theme-music.mp3"},
  "default": {"font-family": "Georgia", "message": "Wishing you all the best on this incredible achievement!"}
 }
