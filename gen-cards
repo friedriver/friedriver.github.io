@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 mkdir docs/c docs/i docs/r 2>/dev/null
+gallery=""
 for f in ecard-sample/*.png; do
   page="$(basename $f | perl -p -e 's/\.png//')"
   font="$(cat ecard-sample/config.json | jq -r '."'$page'"."font-family"')"
@@ -48,4 +49,8 @@ for f in ecard-sample/*.png; do
   else
     echo "|  -> prettier not found, skipping lint"
   fi
+  gallery="$(cat ecard-sample/index-part.html | perl -p -e 's/\{\{IMAGE\}\}/'$page'/g' | perl -p -e 's/([\/\&\\])/\\$1/g' ) $gallery"
 done
+
+perl -p0i -e 's/(<!-- SOG !-->).*(<!-- EOG !-->)/$1<div class="gallery">'"$gallery"'<\/div>$2/gms' docs/index.html
+prettier -w docs/index.html
