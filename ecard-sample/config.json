@@ -4,6 +4,6 @@
  "congratulations": {"audio":"nfl-on-fox-theme-music.mp3"},
  "big-blue-genius": {"background": "#fcfcfc", "audio":"curb-theme.mp3", "message": "Here's to another high draft pick! Happy 2026"},
  "better-together": {"background": "#fbfbfb", "audio":"amanwithoutlove.mp3", "message": "Every couple fights, but we're still better together.\nLove you."},
- "thick-girl": {"audio": "thick-girl.mpga", "message": "Thinking of you"},
+ "thick-girl": {"audio": "thick-girl.mp3", "message": "Thinking of you"},
  "default": {"font-family": "Georgia", "message": "Wishing you all the best on this incredible achievement!"}
 }
