@@ -20,9 +20,19 @@ for f in ecard-sample/*.png; do
   if [[ "$background" == '' || "$background" == "null" ]]; then
     background="#f6f6f5"
   fi
+  layout="$(cat ecard-sample/config.json | jq -r '."'$page'"."layout"')"
+  if [[ "$layout" == '' || "$layout" == "null" ]]; then
+    layout="landscape"
+  fi
   echo "|generating $page"
-  cp "ecard-sample/index.html" "docs/r/$page.html"
-  cp "ecard-sample/index-gen.html" "docs/c/$page.html"
+  if [[ "$layout" == "portrait" ]]; then
+    echo "|  -> layout -> portrait"
+    cp "ecard-sample/index-portrait.html" "docs/r/$page.html"
+    cp "ecard-sample/index-gen-portrait.html" "docs/c/$page.html"
+  else
+    cp "ecard-sample/index.html" "docs/r/$page.html"
+    cp "ecard-sample/index-gen.html" "docs/c/$page.html"
+  fi
   cp "$f" "docs/i/${page}.png"
   perl -pi -e 's/\{\{IMAGE\}\}/'$page'/g' docs/{r,c}/"${page}.html"
   perl -pi -e 's/\{\{FONT\}\}/'$font'/g' docs/{r,c}/"${page}.html"
