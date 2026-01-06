@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>E-Card</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
     <style>
       {{FONT_BLOCK}}
       * {
@@ -317,7 +323,8 @@
           <p id="message">{{MESSAGE}}</p>
           <script>
             const qs = new URLSearchParams(window.location.search);
-            if (qs.get("msg")) document.getElementById("message").innerText = qs.get("msg");
+            if (qs.get("msg"))
+              document.getElementById("message").innerText = qs.get("msg");
           </script>
         </div>
       </div>
@@ -396,13 +403,13 @@
       }
 
       // Start on click
-      document.getElementById('overlay').addEventListener('click', function() {
+      document.getElementById("overlay").addEventListener("click", function () {
         // Hide overlay
-        this.style.display = 'none';
+        this.style.display = "none";
         // Unpause animations
-        document.getElementById('envelope').classList.remove('paused');
+        document.getElementById("envelope").classList.remove("paused");
         // Play audio if present
-        const audio = document.querySelector('audio');
+        const audio = document.querySelector("audio");
         if (audio) audio.play();
         // Fire confetti when flap opens (synced with animation)
         setTimeout(createConfetti, 650);
