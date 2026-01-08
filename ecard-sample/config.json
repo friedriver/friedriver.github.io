@@ -8,5 +8,6 @@
 ,"lets-a-go": {"background": "#fffefe", "audio": "power-mario.mp3", "message": "Thinking of you", "layout":"portrait"}
 ,"disneyland": {"audio": "small-world.mp3", "message": "Let's go on an adventure!"}
 ,"congratulations-carolina": {"background":"#f5efdc", "audio": "oompa-loompa.mp3", "message": "Just don't forget your to-go bags!"}
+,"meanwhile-in-venezuela": {"background":"#f1f0e3", "audio": "imperial-march-short.mp3", "message": "We're sorry, he just needed a new project. Hang in there!", "font-family":"Marker-Felt-Wide"}
 ,"default": {"font-family": "Lora", "message": "Wishing you all the best on this incredible achievement!"}
 }
