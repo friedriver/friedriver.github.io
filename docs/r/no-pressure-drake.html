@@ -4,12 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>E-Card</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
     <style>
       @font-face {
         font-family: "Marker-Felt-Wide";
@@ -33,22 +27,23 @@
       .envelope-container {
         position: relative;
         width: 400px;
-        height: 400px;
+        height: 600px;
         perspective: 1000px;
       }
 
-      /* The card */
+      /* The card - portrait dimensions, starts rotated to fit in landscape envelope */
       .card {
         position: absolute;
-        width: 340px;
-        height: 240px;
-        left: 30px;
-        bottom: 30px;
+        width: 240px;
+        height: 340px;
+        left: 80px;
+        bottom: -20px;
         z-index: 2;
+        transform: rotate(-90deg);
+        transform-origin: center center;
         animation:
-          slideOut 4s ease-in-out 0.5s forwards,
+          slideOutRotate 4s ease-in-out 0.5s forwards,
           cardZ 4s ease-in-out 0.5s forwards;
-        transform-origin: center bottom;
         perspective: 1000px;
       }
 
@@ -71,7 +66,7 @@
       .message-panel {
         position: absolute;
         width: 100%;
-        height: 200px;
+        height: 340px;
         top: 100%;
         left: 0;
         background: #f6f6f5;
@@ -113,7 +108,7 @@
         position: absolute;
         width: 400px;
         height: 160px;
-        top: 120px;
+        top: 320px;
         z-index: 5;
         animation: flapZ 4s ease-in-out 0.5s forwards;
       }
@@ -187,15 +182,15 @@
         }
       }
 
-      /* Card slides out after flap opens */
-      @keyframes slideOut {
+      /* Card slides out and rotates from -90deg to 0deg */
+      @keyframes slideOutRotate {
         0%,
         25% {
-          transform: translateY(0);
+          transform: translateY(0) rotate(-90deg);
         }
         50%,
         100% {
-          transform: translateY(-320px);
+          transform: translateY(-370px) rotate(0deg);
         }
       }
 
@@ -320,10 +315,10 @@
       <div class="envelope-back"></div>
       <div class="card">
         <div class="card-front">
-          <img src="/i/cant-catch-caleb.png" alt="Congratulations Card" />
+          <img src="/i/no-pressure-drake.png" alt="Congratulations Card" />
         </div>
         <div class="message-panel">
-          <p id="message">Houdini with a helmet!</p>
+          <p id="message">No pressure.</p>
           <script>
             const qs = new URLSearchParams(window.location.search);
             if (qs.get("msg"))
@@ -337,11 +332,9 @@
       </div>
     </div>
     <div class="make-your-own">
-      <a href="/c/cant-catch-caleb">Make your own version</a>
+      <a href="/c/no-pressure-drake">Make your own version</a>
     </div>
-    <audio autoplay>
-      <source src="/i/zorro-short.mp3" type="audio/mpeg" />
-    </audio>
+    <audio autoplay><source src="/i/time-short.mp3" type="audio/mpeg" /></audio>
 
     <script>
       const colors = [

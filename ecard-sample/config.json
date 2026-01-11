@@ -10,6 +10,9 @@
 ,"congratulations-carolina": {"background":"#f5efdc", "audio": "oompa-loompa.mp3", "message": "Just don't forget your to-go box!"}
 ,"meanwhile-in-venezuela": {"background":"#f1f0e3", "audio": "imperial-march-short.mp3", "message": "We're sorry, he just needed a new project. Hang in there!", "font-family":"Marker-Felt-Wide"}
 ,"elon-buys-the-jets": {"background":"#faf9ec", "audio": "mnf-short.mp3", "message": "Remember fans - it can always get worse.", "font-family":"Marker-Felt-Wide"}
-,"cant-catch-caleb": {"background":"#4e4f4c", "audio": "zorro-short.mp3", "message": "Houdini with a helmet!", "font-family":"Marker-Felt-Wide"}
+,"cant-catch-caleb": {"audio": "zorro-short.mp3", "message": "Houdini with a helmet!", "font-family":"Marker-Felt-Wide"}
+,"bills-spring-break": {"audio": "party-in-the-usa-short.mp3", "message": "This ain't spring break!", "font-family":"Marker-Felt-Wide"}
+,"rooting-for-the-birds": {"audio": "going-the-distance-short.mp3", "message": "WARNING: rooting for the birds may cause high blood pressure, anxiety and palpitations.", "font-family":"Marker-Felt-Wide", "layout":"portrait"}
+,"no-pressure-drake": { "audio": "time-short.mp3", "message": "No pressure.", "font-family":"Marker-Felt-Wide", "layout":"portrait"}
 ,"default": {"font-family": "Lora", "message": "Wishing you all the best on this incredible achievement!"}
 }

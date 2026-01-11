@@ -4,12 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>E-Card</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
     <style>
       @font-face {
         font-family: "Marker-Felt-Wide";
@@ -24,7 +18,6 @@
       body {
         min-height: 100vh;
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -82,7 +75,6 @@
         animation:
           foldDown 4s ease-in-out 0.5s forwards,
           messagePanelZ 4s ease-in-out 0.5s forwards;
-        display: flex;
         align-items: center;
         justify-content: center;
         padding: 20px;
@@ -267,24 +259,6 @@
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
       }
 
-      /* Make your own link */
-      .make-your-own {
-        margin-top: 20px;
-        text-align: center;
-      }
-
-      .make-your-own a {
-        color: rgba(255, 255, 255, 0.7);
-        font-family: Georgia, serif;
-        font-size: 14px;
-        text-decoration: none;
-      }
-
-      .make-your-own a:hover {
-        color: white;
-        text-decoration: underline;
-      }
-
       /* Confetti */
       .confetti {
         position: fixed;
@@ -311,6 +285,11 @@
             rotate(var(--rotation)) scale(0.5);
         }
       }
+
+      #message {
+        width: 100%;
+        height: 7.5em;
+      }
     </style>
   </head>
   <body>
@@ -320,15 +299,46 @@
       <div class="envelope-back"></div>
       <div class="card">
         <div class="card-front">
-          <img src="/i/cant-catch-caleb.png" alt="Congratulations Card" />
+          <img src="/i/bills-spring-break.png" alt="Congratulations Card" />
         </div>
         <div class="message-panel">
-          <p id="message">Houdini with a helmet!</p>
-          <script>
-            const qs = new URLSearchParams(window.location.search);
-            if (qs.get("msg"))
-              document.getElementById("message").innerText = qs.get("msg");
-          </script>
+          <span id="save-btn-err"></span>
+          <span id="save-btn-ctr">
+            <p>
+              <textarea id="message">This ain't spring break!</textarea>
+            </p>
+            <p>
+              <button style="width: 100%" id="save-btn">Save</button>
+              <script>
+                (() => {
+                  const pg = "bills-spring-break";
+                  document.getElementById("save-btn").onclick = () => {
+                    const xhr = new XMLHttpRequest();
+                    xhr.open(
+                      "GET",
+                      `https://api.friedliver.com/sqrunch?message=${encodeURIComponent(document.getElementById("message").value.trim())}&page=${encodeURIComponent(pg)}`,
+                      true,
+                    );
+                    xhr.onreadystatechange = () => {
+                      if (xhr.readyState == 4 && xhr.status == 200) {
+                        try {
+                          const rdata = JSON.parse(xhr.responseText);
+                          const url = `https://api.friedliver.com/e/${rdata.url}`;
+                          document.getElementById("save-btn-ctr").innerHTML =
+                            `<p><a href="${url}" target="_blank" style="color:#667eea;word-break:break-all;">${url}</a></p>
+                             <p><button style="width:100%;margin-top:8px;" onclick="navigator.clipboard.writeText('${url}').then(() => this.innerText = 'Copied!')">Copy Link</button></p>`;
+                        } catch (e) {
+                          document.getElementById("save-btn-err").innerText =
+                            "Something went wrong, please refresh and try again";
+                        }
+                      }
+                    };
+                    xhr.send();
+                  };
+                })();
+              </script>
+            </p>
+          </span>
         </div>
       </div>
       <div class="envelope-front"></div>
@@ -336,11 +346,8 @@
         <div class="envelope-flap"></div>
       </div>
     </div>
-    <div class="make-your-own">
-      <a href="/c/cant-catch-caleb">Make your own version</a>
-    </div>
     <audio autoplay>
-      <source src="/i/zorro-short.mp3" type="audio/mpeg" />
+      <source src="/i/party-in-the-usa-short.mp3" type="audio/mpeg" />
     </audio>
 
     <script>
