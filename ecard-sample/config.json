@@ -14,5 +14,6 @@
 ,"bills-spring-break": {"audio": "party-in-the-usa-short.mp3", "message": "This ain't spring break!", "font-family":"Marker-Felt-Wide"}
 ,"rooting-for-the-birds": {"audio": "going-the-distance-short.mp3", "message": "WARNING: rooting for the birds may cause high blood pressure, anxiety and palpitations.", "font-family":"Marker-Felt-Wide", "layout":"portrait"}
 ,"no-pressure-drake": { "audio": "time-short.mp3", "message": "No pressure.", "font-family":"Marker-Felt-Wide", "layout":"portrait"}
+,"say-goodbye-to-flavor": { "audio": "bye-bye-baby-short.mp3", "message": "Seriously, stick to soda!", "font-family":"EBGaramond-Regular", "layout":"portrait"}
 ,"default": {"font-family": "Lora", "message": "Wishing you all the best on this incredible achievement!"}
 }
