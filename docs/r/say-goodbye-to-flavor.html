@@ -4,11 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>E-Card</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      @font-face {
-        font-family: "EBGaramond-Regular";
-        src: url("/i/EBGaramond-Regular.ttf");
-      }
       * {
         margin: 0;
         padding: 0;
@@ -27,23 +29,22 @@
       .envelope-container {
         position: relative;
         width: 400px;
-        height: 600px;
+        height: 400px;
         perspective: 1000px;
       }
 
-      /* The card - portrait dimensions, starts rotated to fit in landscape envelope */
+      /* The card */
       .card {
         position: absolute;
-        width: 240px;
-        height: 340px;
-        left: 80px;
-        bottom: -20px;
+        width: 340px;
+        height: 240px;
+        left: 30px;
+        bottom: 30px;
         z-index: 2;
-        transform: rotate(-90deg);
-        transform-origin: center center;
         animation:
-          slideOutRotate 4s ease-in-out 0.5s forwards,
+          slideOut 4s ease-in-out 0.5s forwards,
           cardZ 4s ease-in-out 0.5s forwards;
+        transform-origin: center bottom;
         perspective: 1000px;
       }
 
@@ -66,7 +67,7 @@
       .message-panel {
         position: absolute;
         width: 100%;
-        height: 340px;
+        height: 200px;
         top: 100%;
         left: 0;
         background: #f6f6f5;
@@ -85,7 +86,7 @@
       }
 
       .message-panel p {
-        font-family: "EBGaramond-Regular", serif;
+        font-family: "Lora", serif;
         font-size: 18px;
         color: #333;
         text-align: center;
@@ -108,7 +109,7 @@
         position: absolute;
         width: 400px;
         height: 160px;
-        top: 320px;
+        top: 120px;
         z-index: 5;
         animation: flapZ 4s ease-in-out 0.5s forwards;
       }
@@ -182,15 +183,15 @@
         }
       }
 
-      /* Card slides out and rotates from -90deg to 0deg */
-      @keyframes slideOutRotate {
+      /* Card slides out after flap opens */
+      @keyframes slideOut {
         0%,
         25% {
-          transform: translateY(0) rotate(-90deg);
+          transform: translateY(0);
         }
         50%,
         100% {
-          transform: translateY(-370px) rotate(0deg);
+          transform: translateY(-320px);
         }
       }
 
@@ -318,7 +319,9 @@
           <img src="/i/say-goodbye-to-flavor.png" alt="Congratulations Card" />
         </div>
         <div class="message-panel">
-          <p id="message">Seriously, stick to soda!</p>
+          <p id="message">
+            Wishing you all the best on this incredible achievement!
+          </p>
           <script>
             const qs = new URLSearchParams(window.location.search);
             if (qs.get("msg"))
@@ -334,9 +337,6 @@
     <div class="make-your-own">
       <a href="/c/say-goodbye-to-flavor">Make your own version</a>
     </div>
-    <audio autoplay>
-      <source src="/i/bye-bye-baby-short.mp3" type="audio/mpeg" />
-    </audio>
 
     <script>
       const colors = [

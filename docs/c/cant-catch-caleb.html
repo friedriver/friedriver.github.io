@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>E-Card</title>
     <style>
-      @font-face {
-        font-family: "Marker-Felt-Wide";
-        src: url("/i/Marker-Felt-Wide.ttf");
-      }
       * {
         margin: 0;
         padding: 0;
@@ -82,7 +78,7 @@
       }
 
       .message-panel p {
-        font-family: "Marker-Felt-Wide", serif;
+        font-family: "Lora", serif;
         font-size: 18px;
         color: #333;
         text-align: center;
@@ -305,7 +301,9 @@
           <span id="save-btn-err"></span>
           <span id="save-btn-ctr">
             <p>
-              <textarea id="message">Houdini with a helmet!</textarea>
+              <textarea id="message">
+Wishing you all the best on this incredible achievement!</textarea
+              >
             </p>
             <p>
               <button style="width: 100%" id="save-btn">Save</button>
@@ -346,9 +344,6 @@
         <div class="envelope-flap"></div>
       </div>
     </div>
-    <audio autoplay>
-      <source src="/i/zorro-short.mp3" type="audio/mpeg" />
-    </audio>
 
     <script>
       const colors = [

@@ -11,10 +11,6 @@
       rel="stylesheet"
     />
     <style>
-      @font-face {
-        font-family: "Marker-Felt-Wide";
-        src: url("/i/Marker-Felt-Wide.ttf");
-      }
       * {
         margin: 0;
         padding: 0;
@@ -90,7 +86,7 @@
       }
 
       .message-panel p {
-        font-family: "Marker-Felt-Wide", serif;
+        font-family: "Lora", serif;
         font-size: 18px;
         color: #333;
         text-align: center;
@@ -323,7 +319,9 @@
           <img src="/i/bills-spring-break.png" alt="Congratulations Card" />
         </div>
         <div class="message-panel">
-          <p id="message">This ain't spring break!</p>
+          <p id="message">
+            Wishing you all the best on this incredible achievement!
+          </p>
           <script>
             const qs = new URLSearchParams(window.location.search);
             if (qs.get("msg"))
@@ -339,9 +337,6 @@
     <div class="make-your-own">
       <a href="/c/bills-spring-break">Make your own version</a>
     </div>
-    <audio autoplay>
-      <source src="/i/party-in-the-usa-short.mp3" type="audio/mpeg" />
-    </audio>
 
     <script>
       const colors = [

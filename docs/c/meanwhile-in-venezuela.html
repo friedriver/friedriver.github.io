@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>E-Card</title>
     <style>
-      @font-face {
-        font-family: "Marker-Felt-Wide";
-        src: url("/i/Marker-Felt-Wide.ttf");
-      }
       * {
         margin: 0;
         padding: 0;
@@ -57,7 +53,7 @@
         object-fit: contain;
         border-radius: 8px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        background: #f1f0e3;
+        background: #f6f6f5;
       }
 
       /* Message panel that folds down */
@@ -82,7 +78,7 @@
       }
 
       .message-panel p {
-        font-family: "Marker-Felt-Wide", serif;
+        font-family: "Lora", serif;
         font-size: 18px;
         color: #333;
         text-align: center;
@@ -306,7 +302,7 @@
           <span id="save-btn-ctr">
             <p>
               <textarea id="message">
-We're sorry, he just needed a new project. Hang in there!</textarea
+Wishing you all the best on this incredible achievement!</textarea
               >
             </p>
             <p>
@@ -348,9 +344,6 @@ We're sorry, he just needed a new project. Hang in there!</textarea
         <div class="envelope-flap"></div>
       </div>
     </div>
-    <audio autoplay>
-      <source src="/i/imperial-march-short.mp3" type="audio/mpeg" />
-    </audio>
 
     <script>
       const colors = [
