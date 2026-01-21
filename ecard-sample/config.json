@@ -5,4 +5,5 @@
 ,"elon-buys-the-jets": {"background":"#faf9ec", "audio": "mnf-short.mp3", "message": "Remember fans - it can always get worse.", "font-family":"Marker-Felt-Wide"}
 ,"rooting-for-the-birds": {"audio": "going-the-distance-short.mp3", "message": "WARNING: rooting for the birds may cause high blood pressure, anxiety and palpitations.", "font-family":"Marker-Felt-Wide", "layout":"portrait"}
 ,"no-pressure-drake": { "audio": "time-short.mp3", "message": "No pressure.", "font-family":"Marker-Felt-Wide", "layout":"portrait"}
+,"michelle-ultra": { "audio": "king-short.mp3", "message": "Cheers to being exactly who you are.", "font-family":"brush-script-mt-italic.ttf"}
 }
