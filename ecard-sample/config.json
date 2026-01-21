@@ -2,7 +2,7 @@
 ,"helluva-play": {"background": "#fbfbfb", "audio":"amanwithoutlove.mp3", "message": "You may say the same thing over and over, but I still love you."}
 ,"thick-girl": {"audio": "thick-girl.mp3", "message": "Thinking of you"}
 ,"disneyland": {"audio": "small-world.mp3", "message": "Let's go on an adventure!"}
-,"elon-buys-the-jets": {"background":"#faf9ec", "audio": "mnf-short.mp3", "message": "Remember fans - it can always get worse.", "font-family":"Marker-Felt-Wide"}
+,"elon-buys-the-jets": {"background":"#faf9ec", "audio": "mnf-short.mp3", "message": "Dear Jets Fan,\nLosing sucks, but just remember it can always get worse!\nBest.", "font-family":"Marker-Felt-Wide"}
 ,"rooting-for-the-birds": {"audio": "going-the-distance-short.mp3", "message": "WARNING: rooting for the birds may cause high blood pressure, anxiety and palpitations.", "font-family":"Marker-Felt-Wide", "layout":"portrait"}
 ,"no-pressure-drake": { "audio": "time-short.mp3", "message": "No pressure.", "font-family":"Marker-Felt-Wide", "layout":"portrait"}
 ,"michelle-ultra": { "audio": "king-short.mp3", "message": "Cheers to being exactly who you are.", "font-family":"brush-script-mt-italic.ttf"}
