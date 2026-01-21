@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
     <title>E-Card</title>
     <style>
       @font-face {
@@ -18,9 +21,11 @@
       body {
         min-height: 100vh;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding-top: env(safe-area-inset-top, 0px);
       }
 
       .envelope-container {
@@ -28,6 +33,7 @@
         width: 400px;
         height: 400px;
         perspective: 1000px;
+        margin-top: 100px;
       }
 
       /* The card */
@@ -306,7 +312,9 @@
           <span id="save-btn-ctr">
             <p>
               <textarea id="message">
-Remember fans - it can always get worse.</textarea
+Dear Jets Fan,
+Losing sucks, but just remember it can always get worse!
+Best.</textarea
               >
             </p>
             <p>
