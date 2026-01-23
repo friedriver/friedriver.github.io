@@ -2,9 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
     <title>E-Card</title>
     <style>
+      @font-face {
+        font-family: "Marker-Felt-Wide";
+        src: url("/i/Marker-Felt-Wide.ttf");
+      }
       * {
         margin: 0;
         padding: 0;
@@ -14,9 +21,11 @@
       body {
         min-height: 100vh;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding-top: env(safe-area-inset-top, 0px);
       }
 
       .envelope-container {
@@ -24,6 +33,7 @@
         width: 400px;
         height: 400px;
         perspective: 1000px;
+        margin-top: 100px;
       }
 
       /* The card */
@@ -78,7 +88,7 @@
       }
 
       .message-panel p {
-        font-family: "Lora", serif;
+        font-family: "Marker-Felt-Wide", serif;
         font-size: 18px;
         color: #333;
         text-align: center;
@@ -302,7 +312,9 @@
           <span id="save-btn-ctr">
             <p>
               <textarea id="message">
-Wishing you all the best on this incredible achievement!</textarea
+Dear Bears Fan,
+I heard you had a bad day at work. Sometimes you give it your all and come up short. But you can still be great tomorrow.
+Best. </textarea
               >
             </p>
             <p>
@@ -344,6 +356,9 @@ Wishing you all the best on this incredible achievement!</textarea
         <div class="envelope-flap"></div>
       </div>
     </div>
+    <audio autoplay>
+      <source src="/i/the-night-we-met-intro.mp3" type="audio/mpeg" />
+    </audio>
 
     <script>
       const colors = [
