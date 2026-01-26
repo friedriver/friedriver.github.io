@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
     <title>E-Card</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,6 +14,10 @@
       rel="stylesheet"
     />
     <style>
+      @font-face {
+        font-family: "Marker-Felt-Wide";
+        src: url("/i/Marker-Felt-Wide.ttf");
+      }
       * {
         margin: 0;
         padding: 0;
@@ -24,6 +31,7 @@
         justify-content: center;
         align-items: center;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding-top: env(safe-area-inset-top, 0px);
       }
 
       .envelope-container {
@@ -31,6 +39,7 @@
         width: 400px;
         height: 400px;
         perspective: 1000px;
+        margin-top: 100px;
       }
 
       /* The card */
@@ -60,7 +69,7 @@
         object-fit: contain;
         border-radius: 8px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        background: #f6f6f5;
+        background: #f1f0e3;
       }
 
       /* Message panel that folds down */
@@ -86,7 +95,7 @@
       }
 
       .message-panel p {
-        font-family: "Lora", serif;
+        font-family: "Marker-Felt-Wide", serif;
         font-size: 18px;
         color: #333;
         text-align: center;
@@ -320,7 +329,8 @@
         </div>
         <div class="message-panel">
           <p id="message">
-            Wishing you all the best on this incredible achievement!
+            Hey Son, Congrats on the new job. Just remember if you don't like
+            your boss, it can always be worse! Best.
           </p>
           <script>
             const qs = new URLSearchParams(window.location.search);
@@ -337,6 +347,9 @@
     <div class="make-your-own">
       <a href="/c/meanwhile-in-venezuela">Make your own version</a>
     </div>
+    <audio autoplay>
+      <source src="/i/imperial-march-short.mp3" type="audio/mpeg" />
+    </audio>
 
     <script>
       const colors = [

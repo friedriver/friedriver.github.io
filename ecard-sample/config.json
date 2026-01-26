@@ -7,4 +7,5 @@
 ,"no-pressure-drake": { "audio": "the-man-short.mp3", "message": "Dear Pats Fan,\nGood luck with the new job. I heard the last guy was pretty good.\nBest.", "font-family":"Marker-Felt-Wide", "layout":"portrait"}
 ,"michelle-ultra": { "audio": "king-short.mp3", "message": "Cheers to being exactly who you are.", "font-family":"brush-script-mt-italic"}
 ,"cant-catch-caleb": { "audio": "the-night-we-met-intro.mp3", "message": "Dear Bears Fan,\nI heard you had a bad day at work. Sometimes you give it your all and come up short. But you can still be great tomorrow.\nBest. ", "font-family":"Marker-Felt-Wide"}
+,"meanwhile-in-venezuela": {"background":"#f1f0e3", "audio": "imperial-march-short.mp3", "message": "Hey Son,\nCongrats on the new job. Just remember if you don't like your boss, it can always be worse!\nBest.", "font-family":"Marker-Felt-Wide"}
 }
