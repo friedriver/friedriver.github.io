@@ -8,4 +8,6 @@
 ,"michelle-ultra": { "audio": "king-short.mp3", "message": "Cheers to being exactly who you are.", "font-family":"brush-script-mt-italic"}
 ,"cant-catch-caleb": { "audio": "the-night-we-met-intro.mp3", "message": "Dear Bears Fan,\nI heard you had a bad day at work. Sometimes you give it your all and come up short. But you can still be great tomorrow.\nBest. ", "font-family":"Marker-Felt-Wide"}
 ,"meanwhile-in-venezuela": {"background":"#f1f0e3", "audio": "imperial-march-short.mp3", "message": "Hey Son,\nCongrats on the new job. Just remember if you don't like your boss, it can always be worse!\nBest.", "font-family":"Marker-Felt-Wide"}
+,"rooting-for-the-birds": {"audio": "going-the-distance-short.mp3", "message": "Dear Eagles Fan,\nHappy Birthday!\nHere's hoping the Birds get it together this year.\nBest.", "font-family":"Marker-Felt-Wide", "layout":"portrait"}
+
 }
