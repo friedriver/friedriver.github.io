@@ -2,15 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>E-Card</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:wght@400;600&display=swap"
-      rel="stylesheet"
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
+    <title>E-Card</title>
     <style>
+      @font-face {
+        font-family: "Marker-Felt-Wide";
+        src: url("/i/Marker-Felt-Wide.ttf");
+      }
       * {
         margin: 0;
         padding: 0;
@@ -24,27 +25,30 @@
         justify-content: center;
         align-items: center;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding-top: env(safe-area-inset-top, 0px);
       }
 
       .envelope-container {
         position: relative;
         width: 400px;
-        height: 400px;
+        height: 600px;
         perspective: 1000px;
+        margin-top: 100px;
       }
 
-      /* The card */
+      /* The card - portrait dimensions, starts rotated to fit in landscape envelope */
       .card {
         position: absolute;
-        width: 340px;
-        height: 240px;
-        left: 30px;
-        bottom: 30px;
+        width: 240px;
+        height: 340px;
+        left: 80px;
+        bottom: -20px;
         z-index: 2;
+        transform: rotate(-90deg);
+        transform-origin: center center;
         animation:
-          slideOut 4s ease-in-out 0.5s forwards,
+          slideOutRotate 4s ease-in-out 0.5s forwards,
           cardZ 4s ease-in-out 0.5s forwards;
-        transform-origin: center bottom;
         perspective: 1000px;
       }
 
@@ -67,7 +71,7 @@
       .message-panel {
         position: absolute;
         width: 100%;
-        height: 200px;
+        height: 340px;
         top: 100%;
         left: 0;
         background: #f6f6f5;
@@ -86,7 +90,7 @@
       }
 
       .message-panel p {
-        font-family: "Lora", serif;
+        font-family: "Marker-Felt-Wide", serif;
         font-size: 18px;
         color: #333;
         text-align: center;
@@ -109,7 +113,7 @@
         position: absolute;
         width: 400px;
         height: 160px;
-        top: 120px;
+        top: 320px;
         z-index: 5;
         animation: flapZ 4s ease-in-out 0.5s forwards;
       }
@@ -183,15 +187,15 @@
         }
       }
 
-      /* Card slides out after flap opens */
-      @keyframes slideOut {
+      /* Card slides out and rotates from -90deg to 0deg */
+      @keyframes slideOutRotate {
         0%,
         25% {
-          transform: translateY(0);
+          transform: translateY(0) rotate(-90deg);
         }
         50%,
         100% {
-          transform: translateY(-320px);
+          transform: translateY(-370px) rotate(0deg);
         }
       }
 
@@ -320,7 +324,7 @@
         </div>
         <div class="message-panel">
           <p id="message">
-            Wishing you all the best on this incredible achievement!
+            Hey January's almost over - feel free to throw your salad out! Best.
           </p>
           <script>
             const qs = new URLSearchParams(window.location.search);
@@ -337,6 +341,9 @@
     <div class="make-your-own">
       <a href="/c/farm-to-trash">Make your own version</a>
     </div>
+    <audio autoplay>
+      <source src="/i/going-to-be-friends-short.mp3" type="audio/mpeg" />
+    </audio>
 
     <script>
       const colors = [
