@@ -13,5 +13,6 @@
 ,"trump-taps": {"audio": "smooth-short.mp3", "message": "Hey Love\nYou've struck oil in my heart.\nHappy Valentines, x", "font-family":"Marker-Felt-Wide"}
 ,"loot-box": {"audio": "men-in-tights-short.mp3", "message": "Hey Son,\nHappy birthday - I don't know what I got you but it's heavy!\nLove.", "font-family":"Marker-Felt-Wide"}
 ,"one-more-product": {"audio": "benedictus.mp3", "message": "Gone but never forgotten.\nx.", "font-family":"Marker-Felt-Wide"}
+,"you-sleep-here": {"audio": "working-for-the-man-short.mp3", "message": "Good luck with the new job.\nJust remember it could always be worse!", "font-family":"Marker-Felt-Wide"}
 
 }
