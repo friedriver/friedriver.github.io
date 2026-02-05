@@ -15,5 +15,6 @@
 ,"one-more-product": {"audio": "benedictus.mp3", "message": "Gone but never forgotten.\nx.", "font-family":"Marker-Felt-Wide"}
 ,"you-sleep-here": {"audio": "working-for-the-man-short.mp3", "message": "Good luck with the new job.\nJust remember it could always be worse!", "font-family":"Marker-Felt-Wide"}
 ,"snuggle-up": {"audio": "cant-get-enough-short.mp3", "message": "You're the only deal I never want to renegotiate.\nHappy Valentine's Day.\nx", "font-family":"Marker-Felt-Wide"}
+,"onion-rings": {"audio": "all-my-life-short.mp3", "message": "Happy Valentine's Day to someone I love to roast.\nx", "font-family":"Marker-Felt-Wide", "layout":"portrait"}
 
 }
